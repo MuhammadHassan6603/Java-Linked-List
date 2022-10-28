@@ -1,0 +1,93 @@
+class Node
+{
+    int data;
+    Node link;
+}
+public class Main
+{
+    public static void main(String args[])
+    {
+        Node p;
+        p=null;
+        p=append(p,10);
+        p=append(p,20);
+        p=append(p,30);
+        p=append(p,40);
+        display(p);
+        count(p);
+        p=addAtStart(p,400);
+        display(p);
+        count(p);
+        p=Insert(p,600,3);
+        display(p);
+        count(p);
+    }
+    public static Node append(Node q,int d)
+    {
+        Node r;
+        r=new Node();
+        r.data=d;
+        r.link=null;
+        if(q==null)
+        {
+            q=r;
+        }
+        else
+        {
+            Node temp=q;
+            while(temp.link!=null)
+            {
+                temp=temp.link;
+            }
+            temp.link=r;
+        }
+        return q;
+    }
+    public static void display(Node q)
+    {
+        while(q!=null)
+        {
+            System.out.println(q.data);
+            q=q.link;
+        }
+    }
+    public static void count(Node q)
+    {
+        int i=0;
+        while(q!=null)
+        {
+            i++;
+            q=q.link;
+        }
+        System.out.println("Number of Nodes = " + i);
+    }
+    public static Node addAtStart(Node q,int d)
+    {
+        Node r;
+        r=new Node();
+        r.data=d;
+        r.link=q;
+        q=r;
+        return q;
+    }
+    public static Node Insert(Node q,int d,int pos)
+    {
+        int i=0;
+        Node r,temp;
+        Node prev=q;
+        temp=q;
+        r=new Node();
+        r.data=d;
+        r.link=null;
+        while(i<pos)
+        {
+            prev = temp;
+            temp=temp.link;
+            i++;
+        }
+        r.link=prev.link;
+        prev.link=r;
+        return q;
+    }
+    
+}
